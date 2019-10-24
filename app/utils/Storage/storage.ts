@@ -16,7 +16,14 @@ const getAsync = promisify(client.get).bind(client)
 const setAsync = promisify(client.set).bind(client)
 const delAsync = promisify(client.del).bind(client)
 
+import mongoose from 'mongoose'
+
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost:27017/isen-backend');
+const connection = mongoose.connection;
+
 export {
+  connection,
   getAsync,
   setAsync,
   delAsync
