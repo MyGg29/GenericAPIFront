@@ -1,8 +1,8 @@
 const mongoose = require('mongoose'); // Import de la librairie mongoose
 const Schema = mongoose.Schema;
 
-const LayoutType = new Schema({
+const LayoutTypeSchema = new Schema({
    type: {type: String, required:true},
 });
 
-module.exports = mongoose.model('LayoutType', LayoutType);
+export let LayoutType = mongoose.model('LayoutType', LayoutTypeSchema);

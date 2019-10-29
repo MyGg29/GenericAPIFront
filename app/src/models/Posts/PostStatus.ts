@@ -1,8 +1,8 @@
 const mongoose = require('mongoose'); // Import de la librairie mongoose
 const Schema = mongoose.Schema;
 
-const PostPriority = new Schema({
+const PostStatusSchema = new Schema({
    priority: {type:String, required:true},
 });
 
-module.exports = mongoose.model('PostPriority', PostPriority);
+export let PostStatus = mongoose.model('PostStatus', PostStatusSchema);

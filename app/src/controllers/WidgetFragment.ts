@@ -3,12 +3,12 @@ import {
   Response,
   Router,
 } from 'express'
-import Widget from '../models/Widget/Widget'; // On en a déjà parlé, vous vous en rappelez?
+import WidgetFragment from '../models/Widget/WidgetFragment'; // On en a déjà parlé, vous vous en rappelez?
 //import OrderService from '../services/ordersService'
 //import Securing from '../model/Securing';
 
 export default class WidgetController {
-    public path = "/widget"
+    public path = "/widgetFragment/"
     public router = Router()
     //public WidgetService = WidgetService()
     constructor(){
@@ -22,7 +22,7 @@ export default class WidgetController {
         this.router.get(`${this.path}/:id`, this.getById)
     }
     create(req:Request,res:Response){
-        var widget = new Widget(req.body)
+        var widget = new WidgetFragment(req.body)
         widget.save((err:any, savedWidget:any) => {
             res.status(201).json(savedWidget);
         });
@@ -30,38 +30,38 @@ export default class WidgetController {
     get(req:Request, res:Response){
         if (req.query.owner_id) {
             //find by owner, ?owner_id=string
-            Widget.find({ owner_id: req.query.owner_id }, (err:any, widgets:any) => {
+            WidgetFragment.find({ owner_id: req.query.owner_id }, (err:any, widgets:any) => {
                 return res.status(200).json(widgets)
             })
         }
         else if (req.query.title) {
             //find by title, ?title=string
-            Widget.find({ title: req.query.title }, (err:any, widgets:any) => {
+            WidgetFragment.find({ title: req.query.title }, (err:any, widgets:any) => {
                 return res.status(200).json(widgets)
             })
         }
         else {
             //find all, just /
-            Widget.find({}, (err:any, widgets:any) => {
+            WidgetFragment.find({}, (err:any, widgets:any) => {
                 return res.status(200).json(widgets);
             })
         }
     }
     getById(req:Request,res:Response){
-        Widget.findById(req.params.id, (err:any, widget:any) => {
+        WidgetFragment.findById(req.params.id, (err:any, widget:any) => {
             return res.status(200).json(widget);
         })
     }
     update(req:Request,res:Response){
         if (req.params.id && req.body) {
-            Widget.updateOne({ _id: req.params.id }, req.body, (err:any, widget:any) => {
+            WidgetFragment.updateOne({ _id: req.params.id }, req.body, (err:any, widget:any) => {
                 res.sendStatus(200)
             })
         }
     }
     del(req:Request,res:Response){
         if (req.params.id) {
-            Widget.deleteOne({ _id: req.params.id })
+            WidgetFragment.deleteOne({ _id: req.params.id })
             .then((res:any) => {
                 res.sendStatus(200)
             })

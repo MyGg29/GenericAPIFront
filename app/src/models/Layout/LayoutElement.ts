@@ -1,7 +1,7 @@
 const mongoose = require('mongoose'); // Import de la librairie mongoose
 const Schema = mongoose.Schema;
 
-const LayoutElement = new Schema({
+const LayoutElementSchema = new Schema({
    layout_id: {type:Schema.Types.ObjectId, ref: "DashboardLayout"},
    widget_id: {type:Schema.Types.ObjectId, ref: "Widget"},
    width: {type:Number, required: true},
@@ -13,4 +13,4 @@ const LayoutElement = new Schema({
    max_width: {type:Number, required: true}
 });
 
-module.exports = mongoose.model('LayoutElement', LayoutElement);
+export let LayoutElement = mongoose.model('LayoutElement', LayoutElementSchema);

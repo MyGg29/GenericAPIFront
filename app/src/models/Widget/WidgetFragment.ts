@@ -1,7 +1,7 @@
 const mongoose = require('mongoose'); // Import de la librairie mongoose
 const Schema = mongoose.Schema;
 
-const WidgetFragment = new Schema({
+const WidgetFragmentSchema = new Schema({
    type: {type: Schema.Types.ObjectId, ref: "FragmentType"},
    widget_id: {type: Schema.Types.ObjectId, ref: "Widget"},
    start_column: {type: Number, required : true},
@@ -11,4 +11,4 @@ const WidgetFragment = new Schema({
    configuration: {type: String, required: true}
 });
 
-module.exports = mongoose.model('WidgetFragment', WidgetFragment);
+export let WidgetFragment = mongoose.model('WidgetFragment', WidgetFragmentSchema);

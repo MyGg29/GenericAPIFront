@@ -1,3 +1,4 @@
+/*
 import {
   Request,
   Response,
@@ -14,11 +15,7 @@ export default class OrderController {
   public orderService:IOrderService = new OrderServiceProxy()
 
   constructor() {
-<<<<<<< Updated upstream
     this.initializeRoutes()
-=======
-    this.intializeRoutes()
->>>>>>> Stashed changes
   }
 
   private initializeRoutes() {
@@ -57,3 +54,5 @@ export default class OrderController {
                  : response.sendStatus(404)
   }
 }
+
+*/
