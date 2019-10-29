@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "description": "Awesome starter kit",
   "scripts": {
-    "start": "nodemon --exec ts-node ./server.ts"
+    "start": "nodemon --exec ts-node ./server.ts",
+    "ts-node": "ts-node"
   },
   "dependencies": {
     "deepmerge": "^4.1.1",
