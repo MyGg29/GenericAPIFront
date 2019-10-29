@@ -13,8 +13,10 @@ export default class SensorsController extends GenericController {
     public pushValues(req:Request, res:Response,next:any){
         this.Model.findOne({ id: req.params.id }, (err: any, sensors: any) => {
             sensors.statements.push([new Date(), ...req.body]);
-            this.Model.updateOne({id: 1}, sensors, (err:any,affected:any,resp:any) => console.log(err,affected,resp))
-            res.sendStatus(200)
+            this.Model.updateOne({id: req.params.id}, sensors, (err:any,affected:any,resp:any) => {
+                res.status(200).json({affected:affected})
+                console.log(err,affected,resp)
+            })
         })
     }
     

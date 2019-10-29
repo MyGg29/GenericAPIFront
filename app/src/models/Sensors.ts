@@ -2,9 +2,7 @@ const mongoose = require('mongoose'); // Import de la librairie mongoose
 const Schema = mongoose.Schema;
 
 const SensorsModel = new Schema({
-   id: {type: Number, required: true},
-   key: {type:String, required: true},
-   value: {type:String, required: true},
+   id: {type: Number, required: true, unique: true},
    statements: {type: Array}
 });
 
