@@ -31,24 +31,10 @@ export default class GenericController {
         });
     }
     get(req:Request, res:Response, next:any){
-        if (req.query.owner_id) {
-            //find by owner, ?owner_id=string
-            this.Model.find({ owner_id: req.query.owner_id }, (err:any, widgets:any) => {
-                return res.status(200).json(widgets)
-            })
-        }
-        else if (req.query.title) {
-            //find by title, ?title=string
-            this.Model.find({ title: req.query.title }, (err:any, widgets:any) => {
-                return res.status(200).json(widgets)
-            })
-        }
-        else {
-            //find all, just /
-            this.Model.find({}, (err: any, widgets: any) => {
-                return res.status(200).json(widgets);
-            })
-        }
+        //find all, just /
+        this.Model.find({}, (err: any, widgets: any) => {
+            return res.status(200).json(widgets);
+        })
     }
     getById(req:Request,res:Response, next:any){
         this.Model.findById(req.params.id, (err:any, widget:any) => {
@@ -68,6 +54,9 @@ export default class GenericController {
             .then((result:any) => {
                 res.sendStatus(200)
             })
+        }
+        else{
+            res.sendStatus(403)
         }
     }
 }

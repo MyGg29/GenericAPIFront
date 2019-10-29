@@ -1,0 +1,79 @@
+openapi: 3.0.2
+info:
+  title: Service Publication
+  version: '1.0' 
+servers:
+  - url: 'https://iotdata.yncrea.fr/api/iot'
+paths:
+  /sensors/{id}:
+    delete:
+      description: Delete a sensor
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: The _id value of the object in the mongo database
+      responses:
+        '200':
+          description: OK
+        '403':
+          description: Missing name parameter
+    get:
+      description: Get every data about one sensors
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The _id value of the object in the mongo database
+      responses:
+        '200':
+          description: OK
+    put:
+      description: Update a sensor with new values
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The _id value of the object in the mongo database
+      responses:
+        '200':
+          description: OK
+  /sensors/:
+    get:
+      description: Get every data about every sensors
+      responses:
+        '200':
+          description: OK
+    post:
+      description: Create a new sensors with the data in the body
+      responses:
+        '201':
+          description: Created
+  /sensors/{id}/statements:
+    post:
+      description: Push another values to the statement array of a sensor
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+          description: The id of the capteur
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  affected:
+                    type: object
+
+              
+            
