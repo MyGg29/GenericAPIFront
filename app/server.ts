@@ -1,11 +1,13 @@
 import App from './app'
 //import OrderController from './src/controllers/OrderController'
 import GenericController  from './src/controllers/GenericController'
+import SensorsController  from './src/controllers/SensorsController'
 import { connection } from './utils/Storage/storage'
 
-import { User, UserRole, Role, Widget, WidgetConfig, WidgetFragment , FragmentContent, FragmentType, FragmentFamilies, Dashboard, DashboardType, DashboardLayout, LayoutElement, LayoutType, NewsPost, PostPriority, PostStatus, AdminLog, LogType } from './src/models'; 
+import { Sensors, User, UserRole, Role, Widget, WidgetConfig, WidgetFragment , FragmentContent, FragmentType, FragmentFamilies, Dashboard, DashboardType, DashboardLayout, LayoutElement, LayoutType, NewsPost, PostPriority, PostStatus, AdminLog, LogType } from './src/models'; 
 const app = new App([
   //new OrderController(),
+  new SensorsController("/sensors",Sensors),
   new GenericController("/users",User),
   new GenericController("/usersRole",UserRole),
   new GenericController("/role",Role),

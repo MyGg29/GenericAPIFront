@@ -17,3 +17,4 @@ export * from './Layout/LayoutType';
 export * from './Dashboard/Dashboard'; 
 export * from './Dashboard/DashboardLayout'; 
 export * from './Dashboard/DashboardType'; 
+export * from './Sensors'; 
